@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>百级无菌方舱 · 3D 交互演示（小迪 one 系列）</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #e8edf2; font-family: "Microsoft YaHei", sans-serif; }
+      #app { width: 100vw; height: 100vh; }
+      .bar {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+        display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+        padding: 8px 12px; background: rgba(255,255,255,.92); border-bottom: 1px solid #d5dce4;
+        backdrop-filter: blur(6px);
+      }
+      .bar img { height: 26px; }
+      .bar .t { font-size: 13px; color: #475569; font-weight: 600; }
+      .bar .tag { font-size: 10px; background: #e0f2fe; color: #0369a1; border-radius: 99px; padding: 2px 8px; font-weight: 700; }
+      .bar .sp { flex: 1; }
+      .btn {
+        border: 1px solid #cbd5e1; background: #fff; color: #475569;
+        border-radius: 8px; padding: 5px 10px; font-size: 12px; cursor: pointer;
+      }
+      .btn.on { background: #1d6fb8; border-color: #1d6fb8; color: #fff; }
+      .legend {
+        position: fixed; left: 10px; bottom: 10px; z-index: 10;
+        background: rgba(255,255,255,.92); border: 1px solid #d5dce4; border-radius: 12px;
+        padding: 8px 12px; font-size: 11px; color: #475569; line-height: 1.9;
+      }
+      .ln { display: inline-block; width: 22px; border-top: 2px dashed; vertical-align: middle; margin-right: 6px; }
+      .specs {
+        position: fixed; right: 10px; top: 56px; z-index: 10;
+        background: rgba(255,255,255,.92); border: 1px solid #d5dce4; border-radius: 12px;
+        padding: 10px 14px; font-size: 12px; color: #334155; line-height: 2;
+      }
+      .specs b { color: #1d6fb8; }
+      .hint {
+        position: fixed; right: 10px; bottom: 10px; z-index: 10;
+        background: rgba(30,41,59,.8); color: #fff; font-size: 11px;
+        border-radius: 8px; padding: 5px 10px;
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-D-Wc7KdH.js"></script>
+  </head>
+  <body>
+    <div class="bar">
+      <img src="logo.png" alt="logo" id="logoImg" />
+      <span class="t">百级无菌方舱 · 3D 交互演示</span>
+      <span class="tag">小迪 one 系列 · 免密码快速打开</span>
+      <span class="sp"></span>
+      <button class="btn on" id="bFlow">气流动画</button>
+      <button class="btn on" id="bLabel">部件标签</button>
+      <button class="btn" id="bCut">剖视内部</button>
+      <button class="btn" id="bDock">连接一体（机组对接）</button>
+      <button class="btn" id="bRot">自动旋转</button>
+      <button class="btn" id="bReset">复位视角</button>
+    </div>
+    <div class="specs">
+      <b>方舱参数</b><br/>
+      舱内净尺寸 <b>2800 × 2400 × 2000</b><br/>
+      洁净度 <b>百级</b>（H14 天花滤芯层流送风）<br/>
+      四角回风方柱 + 顶部不锈钢回风管<br/>
+      电磁对接外部机组（送风/回风接口）
+    </div>
+    <div class="legend">
+      <div><span class="ln" style="border-color:#2563eb"></span>送风（顶部 H14 滤芯层流向下）</div>
+      <div><span class="ln" style="border-color:#059669"></span>回风（四角柱底回风口 → 顶部回风管 → 对接口）</div>
+      <div><span class="ln" style="border-color:#64748b"></span>对接气流（连接一体后，机组 ⇄ 方舱）</div>
+    </div>
+    <div class="hint">拖动旋转 · 滚轮/双指缩放</div>
+    <div id="app"></div>
+  </body>
+</html>
